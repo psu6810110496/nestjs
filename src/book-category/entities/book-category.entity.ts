@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
+
 @Entity()
 export class BookCategory {
   @PrimaryGeneratedColumn('uuid') // ใช้ ID เป็น UUID

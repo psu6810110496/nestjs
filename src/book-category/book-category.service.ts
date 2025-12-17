@@ -1,10 +1,9 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { BookCategory } from './entities/book-category.entity';
 import { CreateBookCategoryDto } from './dto/create-book-category.dto';
 import { UpdateBookCategoryDto } from './dto/update-book-category.dto';
-
+import { BookCategory } from './entities/book-category.entity';
 
 @Injectable()
 export class BookCategoryService implements OnModuleInit {
@@ -13,6 +12,7 @@ export class BookCategoryService implements OnModuleInit {
     private repo: Repository<BookCategory>,
   ) {}
 
+  // 1. ส่วน Seeding (สร้างข้อมูลเริ่มต้น)
   async onModuleInit() {
     const count = await this.repo.count();
     if (count === 0) {
@@ -20,28 +20,30 @@ export class BookCategoryService implements OnModuleInit {
       await this.repo.save([
         { name: 'Fiction', description: 'Stories and novels' },
         { name: 'Technology', description: 'Computers and engineering' },
-        { name: 'History', description: 'Past events' }
+        { name: 'History', description: 'Past events' },
       ]);
     }
   }
 
+  // 2. ส่วน CRUD (ที่ Controller ต้องเรียกใช้)
   create(createBookCategoryDto: CreateBookCategoryDto) {
-    return 'This action adds a new bookCategory';
+    return this.repo.save(createBookCategoryDto);
   }
 
   findAll() {
-  return this.repo.find(); // เรียกดูข้อมูลทั้งหมดจากตาราง BookCategory
+    return this.repo.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bookCategory`;
+  findOne(id: string) {
+    return this.repo.findOneBy({ id });
   }
 
-  update(id: number, updateBookCategoryDto: UpdateBookCategoryDto) {
-    return `This action updates a #${id} bookCategory`;
+  update(id: string, updateBookCategoryDto: UpdateBookCategoryDto) {
+    return this.repo.update(id, updateBookCategoryDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} bookCategory`;
+  remove(id: string) {
+    return this.repo.delete(id);
   }
+  
 }
