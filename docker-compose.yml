@@ -8,9 +8,17 @@ services:
       POSTGRES_PASSWORD: password123
       POSTGRES_DB: bookstore_dev
     ports:
+<<<<<<< HEAD
       - '5433:5432'
+=======
+      - '5432:5432'
+>>>>>>> origin/master
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
 volumes:
+<<<<<<< HEAD
   postgres_data:
+=======
+  postgres_data:
+>>>>>>> origin/master
