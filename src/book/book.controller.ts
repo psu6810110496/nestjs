@@ -19,30 +19,16 @@ export class BookController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-<<<<<<< HEAD
     return this.bookService.findOne(id);
-=======
-    return this.bookService.findOne(+id);
->>>>>>> b9c342aad3e496e01fcca38e4e054eb3ea0b947e
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateBookDto: UpdateBookDto) {
-<<<<<<< HEAD
     return this.bookService.update(id, updateBookDto);
-=======
-    return this.bookService.update(+id, updateBookDto);
->>>>>>> b9c342aad3e496e01fcca38e4e054eb3ea0b947e
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-<<<<<<< HEAD
     return this.bookService.remove(id);
   }
 }
-=======
-    return this.bookService.remove(+id);
-  }
-}
->>>>>>> b9c342aad3e496e01fcca38e4e054eb3ea0b947e

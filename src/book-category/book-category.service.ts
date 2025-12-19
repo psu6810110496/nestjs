@@ -12,10 +12,6 @@ export class BookCategoryService implements OnModuleInit {
     private repo: Repository<BookCategory>,
   ) {}
 
-<<<<<<< HEAD
-=======
-  // 1. ส่วน Seeding (สร้างข้อมูลเริ่มต้น)
->>>>>>> b9c342aad3e496e01fcca38e4e054eb3ea0b947e
   async onModuleInit() {
     const count = await this.repo.count();
     if (count === 0) {
@@ -28,10 +24,6 @@ export class BookCategoryService implements OnModuleInit {
     }
   }
 
-<<<<<<< HEAD
-=======
-  // 2. ส่วน CRUD (ที่ Controller ต้องเรียกใช้)
->>>>>>> b9c342aad3e496e01fcca38e4e054eb3ea0b947e
   create(createBookCategoryDto: CreateBookCategoryDto) {
     return this.repo.save(createBookCategoryDto);
   }
@@ -51,9 +43,4 @@ export class BookCategoryService implements OnModuleInit {
   remove(id: string) {
     return this.repo.delete(id);
   }
-<<<<<<< HEAD
 }
-=======
-  
-}
->>>>>>> b9c342aad3e496e01fcca38e4e054eb3ea0b947e

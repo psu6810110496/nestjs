@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { BookCategory } from '../../book-category/entities/book-category.entity';
 
@@ -25,6 +24,3 @@ export class Book {
   @Column({ nullable: true })
   categoryId: string;
 }
-=======
-export class Book {}
->>>>>>> b9c342aad3e496e01fcca38e4e054eb3ea0b947e
