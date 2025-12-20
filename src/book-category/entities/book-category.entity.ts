@@ -1,9 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-
 @Entity()
 export class BookCategory {
-  @PrimaryGeneratedColumn('uuid') // ใช้ ID เป็น UUID
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
@@ -17,5 +16,4 @@ export class BookCategory {
 
   @UpdateDateColumn()
   updatedAt: Date;
-
 }

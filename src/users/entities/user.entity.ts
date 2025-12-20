@@ -1,0 +1,30 @@
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+import { Book } from '../../book/entities/book.entity';
+
+export enum UserRole {
+  USER = 'user',
+  ADMIN = 'ADMIN',
+  EDITOR = 'editor',
+}
+
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ unique: true })
+  email: string;
+
+  @Column()
+  password: string;
+
+  @Column({
+    type: 'enum',
+    enum: UserRole,
+    default: UserRole.USER,
+  })
+  role: UserRole;
+
+  @ManyToMany(() => Book, (book) => book.likedBy)
+  likedBooks: Book[];
+}
